@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   template: `
@@ -29,7 +30,31 @@ import { Component, OnInit } from '@angular/core';
 })
 
 //teste
-export class AppComponent {
+export class AppComponent implements OnInit {
+title = "RXJS"
 
+  minhPromisse(nome: string): Promise<string>{
+      return new Promise((resolve, reject) => {
+        if(nome === 'Ana'){
+          setTimeout(() =>{
+            resolve('Seja bem vinda Ana')
+          }, 1000)
+        }
+        else{
+          reject('Ops! Você não é o Eduardo')
+        }
+      })
+  }
 
+  //  primeiro método que é chamado quando carrega o component
+  ngOnInit() : void{
+
+  //Quando receber o resultado, executa o then
+    //resolve
+    // this.minhPromisse('Ana').then(result => console.log(result))
+
+    //reject e tratamento do erro com catch
+    this.minhPromisse('João').then(result => console.log(result))
+        .catch(erro => console.log(erro))
+  }
 }
