@@ -55,6 +55,7 @@ export class AppComponent implements OnInit {
                     setTimeout(() => {
                         subscriber.next('Resposta com Delay')
                     }, 1000)
+                    subscriber.complete();
                 }
 
                 else{
@@ -63,7 +64,6 @@ export class AppComponent implements OnInit {
             }
         )
     }
-
 
     //  primeiro método que é chamado quando carrega o component
     ngOnInit(): void {
@@ -76,8 +76,19 @@ export class AppComponent implements OnInit {
         // this.minhaPromisse('João').then(result => console.log(result))
         //     .catch(erro => console.log(erro))
 
-        this.minhaObservable('Ana').subscribe(result => console.log(result), erro =>{
-            console.log(erro)
-        })
+        // this.minhaObservable('Ana').subscribe(result => console.log(result), erro =>{
+        //     console.log(erro)
+        // })
+
+        // Conjunto de instrucões para o retorno de uma Observer
+        const observer  = {
+            next: (valor: any)  => console.log('Next: ', valor),
+            error: (erro: string) => console.log('Erro: ', erro),
+            complete: () => console.log('FIM!')
+        }
+
+        //Passando Observer para uma observable
+        const obs = this.minhaObservable('Ana');
+        obs.subscribe(observer)
     }
 }
