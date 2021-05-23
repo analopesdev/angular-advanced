@@ -27,6 +27,8 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
+
+//teste
 export class AppComponent {
 
 
