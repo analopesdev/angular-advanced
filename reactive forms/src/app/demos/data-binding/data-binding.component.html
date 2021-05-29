@@ -1,0 +1,46 @@
+<div class="container main-container">
+  <h3>Interpolation</h3>
+  <p>O número de cliques é: {{ contadorClique }} </p>
+  <br><br>
+
+  <p [ngClass]="{ 
+      'text-secondary':contadorClique < 3,
+      'text-success':contadorClique >= 3,
+      'text-warning':contadorClique >= 5,
+      'text-danger':contadorClique >= 9
+  }">O número de cliques é: {{ contadorClique }}</p>
+
+  <h3>Property binding</h3>
+  // Botão desabilitado enquanto o contadorClique for > 10
+  <button class="btn btn-info" [disabled] = "contadorClique >= 10">Info</button><br><br>
+  <img [src]="urlImagem" height="50px" width="50px">
+
+  <h3>Event Binding</h3>
+  <button class="btn btn-warning" (click)='adicionarClique()'>Clique me</button>
+  <button class="btn btn-danger" (click)='zerarContador()' [disabled]='contadorClique < 10'>Zerar Contador</button>
+
+  <h3>Two-way Binding</h3>
+  <input type="text" (keypress)='handleName($event)' placeholder="Digite seu nome">
+  <input type="text" (keyup)='keyUpBinding($event)' placeholder="Digite seu nome">
+  <br>
+  <br>
+  <label>Seu nome é: {{ name }} </label>
+  <br>
+  <label>Seu nome é: {{ keyUpName }} </label>
+  <br>
+  <br>
+
+  <!-- <h3>Two-way Binding True</h3>
+   <!-- [ngModel] = atualização do novo valor, ou seja, muda seu valor -->
+  <!-- (ngModelChange) = ele exibe "dispara toda vez que o ngModel muda" -->
+  <!-- <input type="text" [ngModel]="name" (ngModelChange)='name = $event' placeholder="Digite seu nome">
+  <br>
+  <br>
+  <label>Seu nome é: {{ name }} </label> --> -->
+
+  <h3> Modo moderno </h3>
+  <input type="text" [(ngModel)]="name" placeholder="Digite seu nome">
+    <br>
+    <br>
+    <label [ngClass]="name">Seu nome é: {{ name }}</label>
+</div>
