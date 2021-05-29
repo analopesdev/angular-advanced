@@ -18,6 +18,9 @@ import {ContatoComponent} from './institucional/contato/contato.component';
 import {rootRouterConfig} from './app.routes';
 import {DataBindingComponent} from './demos/data-binding/data-binding.component';
 import {CadastroComponent} from './demos/reactiveForms/cadastro/cadastro.component';
+import {NgBrazil} from "ng-brazil";
+import { TextMaskModule } from 'angular2-text-mask';
+import { CustomFormsModule } from 'ng2-validation'
 
 @NgModule({
     declarations: [
@@ -35,6 +38,10 @@ import {CadastroComponent} from './demos/reactiveForms/cadastro/cadastro.compone
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        NgBrazil,
+        TextMaskModule,
+        CustomFormsModule,
+
         //  Import das rotas
         //  useHash = false para tirar o prefixo => "#"
         [RouterModule.forRoot(rootRouterConfig, {useHash: false})],
